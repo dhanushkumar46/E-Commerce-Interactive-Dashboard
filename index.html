@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Potability Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('/Users/kollamohanrao/Downloads/backgf.jpeg'); /* Add the path to your background image */
+
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: white; /* Text color is white */
+            margin: 20px 0;
+            text-shadow: 4px 4px 4px #000; /* Black border using text-shadow */
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 2%;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            text-align: center;
+            width: 100%;
+            padding: 1% 0;
+            margin: 1% auto;
+            border: none;
+            background-color: #f7f7f7;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+            transform: scale(1);
+            cursor: text;
+            font-size: 16px;
+        font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+            animation: float 5s infinite; /* Add the floating animation to input text fields */
+        }
+
+        input[type="text"]:focus {
+            background-color: #e3e3e3;
+            transform: scale(1.02);
+        }
+
+        input[type="submit"] {
+            background-color: #1f4f6b;
+            color: #fff;
+            padding: 1% 0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 20px;
+            width: 20%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #155a8a;
+        }
+
+        p {
+            margin: 2% 0;
+            font-weight: bold;
+            color: #1f4f6b;
+        }
+
+        .prediction-card {
+            background-color: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #1f4f6b;
+            animation: float 5s infinite; /* Add the floating animation to the prediction card */
+        }
+
+        .prediction-card p {
+            margin: 0;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* Adjust the value for the desired float height */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Water Potability Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="ph">PH:</label>
+        <input type="text" name="ph" placeholder="Enter PH value">
+        <label for="hardness">Hardness:</label>
+        <input type="text" name="hardness" placeholder="Enter hardness value">
+        <label for="solids">Solids:</label>
+        <input type="text" name="solids" placeholder="Enter solids value">
+        <label for="chloramines">Chloramines:</label>
+        <input type="text" name="chloramines" placeholder="Enter chloramines value">
+        <label for="sulfate">Sulfate:</label>
+        <input type="text" name="sulfate" placeholder="Enter sulfate value">
+        <label for="conductivity">Conductivity:</label>
+        <input type="text" name="conductivity" placeholder="Enter conductivity value">
+        <label for="organic_carbon">Organic Carbon:</label>
+        <input type="text" name="organic_carbon" placeholder="Enter organic carbon value">
+        <label for="trihalomethanes">Trihalomethanes:</label>
+        <input type="text" name="trihalomethanes" placeholder="Enter trihalomethanes value">
+        <label for="turbidity">Turbidity:</label>
+        <input type="text" name="turbidity" placeholder="Enter turbidity value">
+        <input type="submit" value="Predict">
+    </form>
+    <div class="prediction-card">
+        {% if prediction_result %}
+            <p>Prediction Result: {{ prediction_result }}</p>
+        {% endif }
+    </div>
+</body>
+</html>
